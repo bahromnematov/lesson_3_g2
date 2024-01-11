@@ -12,28 +12,25 @@ class _Lesson5State extends State<Lesson5> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-
-
-
           title: Text("Lesson 5"),
         ),
         body: GridView.count(
           scrollDirection: Axis.vertical,
           crossAxisCount: 3,
           children: [
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person2.jpg",text: "Person2"),
-            itemPost(image: "assets/person3.jpg",text: "Person3"),
-            itemPost(image: "assets/person1.jpg",text: "Person4"),
-            itemPost(image: "assets/person1.jpg",text: "Person5"),
-            itemPost(image: "assets/person1.jpg",text: "Person6"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
-            itemPost(image: "assets/person1.jpg",text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person2.jpg", text: "Person2"),
+            itemPost(image: "assets/person3.jpg", text: "Person3"),
+            itemPost(image: "assets/person1.jpg", text: "Person4"),
+            itemPost(image: "assets/person1.jpg", text: "Person5"),
+            itemPost(image: "assets/person1.jpg", text: "Person6"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
+            itemPost(image: "assets/person1.jpg", text: "Person1"),
           ],
         ));
   }
@@ -47,11 +44,8 @@ class _Lesson5State extends State<Lesson5> {
             height: 70,
             width: 70,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              image: DecorationImage(
-                image: AssetImage(image)
-              )
-            ),
+                borderRadius: BorderRadius.circular(100),
+                image: DecorationImage(image: AssetImage(image))),
           ),
           SizedBox(
             width: 10,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_3_g2/second_page.dart';
 
 class HomePage extends StatefulWidget {
+  static final String id = "home_page";
+
   const HomePage({super.key});
 
   @override
@@ -8,32 +11,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future _openPage() async {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext contetx) {
+      return SecondPage(input: "Flutter",);
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
-        appBar: AppBar(
-          title: Text("Flutter Demo"),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            _openPage();
+          },
+          child: Text(
+            "Next Page",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Container(
-                height: 250,
-                width: 250,
-                color: Colors.brown,
-                child: Column(
-                  children: [
-                    Expanded(child: Container(color: Colors.red,)),
-                    Expanded(child: Container(color: Colors.green,)),
-                    Expanded(child: Container(color: Colors.deepPurple,)),
-                    Expanded(child: Container(color: Colors.orange,)),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ));
+      ),
+    );
   }
 }

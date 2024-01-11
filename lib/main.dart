@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_3_g2/home_page.dart';
+import 'package:lesson_3_g2/second_page.dart';
 import 'lesson_5.dart';
 
 void main() {
@@ -15,6 +17,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Lesson5());
+        home: HomePage(),
+      routes: {
+          HomePage.id:(context)=>HomePage(),
+          SecondPage.id:(context)=>SecondPage(input: "",),
+      },
+
+
+    );
   }
 }

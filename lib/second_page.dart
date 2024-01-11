@@ -1,80 +1,27 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({super.key});
+  final String input;
+  static final String id="second_page";
+  const SecondPage({super.key,required this.input});
 
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: Text("Smart Star"),
-          centerTitle: true,
+      body: Center(
+        child: Text(
+         widget.input,
+          style: TextStyle(fontSize: 40, color: Colors.black),
         ),
-        body: Container(
-          padding: EdgeInsets.all(20),
-          color: Colors.blue,
-          child: Container(
-            height: 400,
-            color: Colors.black,
-            child: Column(
-              children: [
-                Expanded(
-                    child: Container(
-                  padding: EdgeInsets.all(12),
-                  color: Colors.blue,
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    color: Colors.black,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                )),
-                Expanded(
-                    child: Container(
-                  padding: EdgeInsets.all(12),
-                  color: Colors.blue,
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    color: Colors.black,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                )),
-                Expanded(
-                    child: Container(
-                  padding: EdgeInsets.all(12),
-                  color: Colors.blue,
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    color: Colors.black,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                )),
-                Expanded(
-                    child: Container(
-                  padding: EdgeInsets.all(12),
-                  color: Colors.blue,
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    color: Colors.black,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                )),
-              ],
-            ),
-          ),
-        ));
+      ),
+    );
   }
 }
