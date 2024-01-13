@@ -1,84 +1,74 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class Lesson4 extends StatefulWidget {
-  const Lesson4({super.key});
-
+class Option1 extends StatefulWidget {
   @override
-  State<Lesson4> createState() => _Lesson4State();
+  _Option1State createState() => _Option1State();
 }
 
-class _Lesson4State extends State<Lesson4> {
+class _Option1State extends State<Option1> with TickerProviderStateMixin {
+  Animation<double>? animation;
+  AnimationController? animationController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
+    animation = Tween<double>(begin: 0, end: -300)
+        .animate(animationController as Animation<double>)
+      ..addListener(() {
+        setState(() {});
+      });
+
+    animationController!.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed) {
+        animationController!.repeat();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-         if(Platform.isAndroid){
-           androidDialog();
-         }else if(Platform.isIOS){
-           IosDialog(context);
-         }
-
-          },
-          child: Text("Dialog"),
+    return Stack(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/person1.jpg'), fit: BoxFit.cover)),
         ),
-      ),
+        Align(
+          alignment: AlignmentDirectional(0, 0.7),
+          child: Transform.translate(
+            offset: Offset(0, animation!.value),
+            child: Container(
+              height: 250,
+              width: 170,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/person2.jpg'),
+              )),
+            ),
+          ),
+        ),
+        Align(
+          alignment: AlignmentDirectional.bottomCenter,
+          child: ElevatedButton(
+            onPressed: () {
+              animationController!.forward();
+            },
+            child: Text('Go'),
+          ),
+        )
+      ],
     );
   }
 
-  void androidDialog() {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Log Out"),
-            content: Text("Confirm tugmasini bossez account uchib ketdi"),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Confirm",
-                    style: TextStyle(color: Colors.blueAccent),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Cancel",
-                    style: TextStyle(color: Colors.blueAccent),
-                  ))
-            ],
-          );
-        });
-  }
-
-  void IosDialog(BuildContext context){
-    showCupertinoModalPopup(context: context, builder: (BuildContext contetx){
-      return CupertinoAlertDialog(
-        title: Text("Log Out"),
-        content: Text("Cancel tugmasini bosilsa dialog yopiladi"),
-        actions: [
-          CupertinoDialogAction(
-            isDefaultAction: true,
-            onPressed: (){
-              Navigator.pop(context);
-            },
-              child: Text("Confirm",style: TextStyle(color: Colors.red),)),
-          CupertinoDialogAction(
-              onPressed: (){
-                Navigator.pop(context);
-              },
-              child: Text("Cancel",style: TextStyle(color: Colors.blueAccent),))
-        ],
-      );
-
-    });
+  @override
+  void dispose() {
+    animationController!.dispose();
+    super.dispose();
   }
 }

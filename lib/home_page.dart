@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   Future _openPage() async {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext contetx) {
-      return SecondPage(input: "Flutter",);
+      return SecondPage(input: "Flutter",age: 21,);
     }));
   }
 
@@ -24,7 +24,8 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            _openPage();
+            // _openPage();
+            Navigator.pushNamed(context, SecondPage.id);
           },
           child: Text(
             "Next Page",
